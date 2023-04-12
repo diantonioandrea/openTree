@@ -1,0 +1,41 @@
+{
+	"exit": {
+		"description": "Exits the program."
+	}, 
+	"password": {
+		"description": "Lets the user pick a password to protect its account or disable it."
+	},
+	"set": {
+		"description": "Sets the value for a setting.",
+		"options": {"-t": "THEME:light/dark"}
+	},
+	"new": {
+		"description": "Creates a new node"
+	},
+	"edit": {
+		"description": "Edits a single node",
+		"options": {"-n#": "NODES_ID"}
+	},
+	"remove": {
+		"description": "Removes a single node",
+		"options": {"-n#": "NODES_ID"}
+	},
+	"list": {
+		"description": "Lists the nodes in the tree."
+	},
+	"connections": {
+		"description": "Prints the connections of a single node.",
+		"options": {"-n#": "NODES_ID"}
+	},
+	"stats": {
+		"description": "Print some statistics on the tree."
+	},
+	"connect": {
+		"description": "Connects two nodes.",
+		"options": {"-n#": "NODES_ID", "-c": "CHILD_ID", "-s": "SIBLING_ID", "-m": "MATE_ID", "-p": "PARENT_ID"}
+	},
+	"disconnect": {
+		"description": "Disconnects two nodes.",
+		"options": {"-n#": "NODES_ID", "-c": "CHILD_ID", "-s": "SIBLING_ID", "-m": "MATE_ID", "-p": "PARENT_ID"}
+	}
+}

@@ -1,0 +1,20 @@
+# OPENTREE
+
+data
+
+# MAKE COMPILE AND WINDOWS
+
+build
+dist
+*.spec
+release
+
+openTree
+openTree.exe
+
+# OTHERS
+
+.vscode
+
+**/__pycache__
+**/.DS_Store
