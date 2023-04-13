@@ -1,8 +1,8 @@
-unix: # Linux release
+unix: # Linux and macOS
 	pyinstaller --onefile --console src/main.py
 	mv dist/main openTree
 
-windows: # Windows release
+windows: # Windows
 	pyinstaller --onefile --console .\src\main.py
 	move .\dist\main.exe .\openTree.exe
 

@@ -27,7 +27,7 @@ As a one-liner:
 where PLATFORM must be replaced by:
 
 * windows
-* unix (linux and macOS)
+* unix (Linux and macOS)
 
 based on the platform on which **openTree** will be compiled.  
 **openTree** can be then installed[^2] by:
