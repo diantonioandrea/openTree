@@ -64,20 +64,20 @@ class node:
 			else:
 				break
 
-		self.birth = CLIbrary.dateIn({"request": "Node's birth date"}) if CLIbrary.boolIn({"request": "Is node's birth date known?"}) else "?"
-		self.death = (CLIbrary.dateIn({"request": "Node's death date"}) if CLIbrary.boolIn({"request": "Is node's death date known?"}) else "?") if CLIbrary.boolIn({"request": "Is node dead?"}) else ""
+		self.birth = CLIbrary.dateIn({"placeholders": True, "request": "Node's birth date"}) if CLIbrary.boolIn({"request": "Is node's birth date known?"}) else "?"
+		self.death = (CLIbrary.dateIn({"placeholders": True, "request": "Node's death date"}) if CLIbrary.boolIn({"request": "Is node's death date known?"}) else "?") if CLIbrary.boolIn({"request": "Is node dead?"}) else ""
 
 	def edit(self) -> None:
 		self.name = CLIbrary.strIn({"request": "Node's name"}) if CLIbrary.boolIn({"request": "Edit {}'s name [{}]".format(self.id, self.name)}) else self.name
 		self.surname = CLIbrary.strIn({"request": "Node's surname"}) if CLIbrary.boolIn({"request": "Edit {}'s surname [{}]".format(self.id, self.surname)}) else self.surname
 
-		self.birth = CLIbrary.dateIn({"request": "Node's birth date"}) if CLIbrary.boolIn({"request": "Edit {}'s birth date [{}]".format(self.id, self.birth)}) else self.birth
+		self.birth = CLIbrary.dateIn({"placeholders": True, "request": "Node's birth date"}) if CLIbrary.boolIn({"request": "Edit {}'s birth date [{}]".format(self.id, self.birth)}) else self.birth
 
 		if not self.death:
-			self.death = (CLIbrary.dateIn({"request": "Node's death date"}) if CLIbrary.boolIn({"request": "Edit {}'s death date [{}]".format(self.id, self.death)}) else self.death) if CLIbrary.boolIn({"request": "Is node dead?"}) else ""
+			self.death = (CLIbrary.dateIn({"placeholders": True, "request": "Node's death date"}) if CLIbrary.boolIn({"request": "Edit {}'s death date [{}]".format(self.id, self.death)}) else self.death) if CLIbrary.boolIn({"request": "Is node dead?"}) else ""
 		
 		else:
-			self.death = CLIbrary.dateIn({"request": "Node's death date"}) if CLIbrary.boolIn({"request": "Edit {}'s death date [{}]".format(self.id, self.death)}) else self.death
+			self.death = CLIbrary.dateIn({"placeholders": True, "request": "Node's death date"}) if CLIbrary.boolIn({"request": "Edit {}'s death date [{}]".format(self.id, self.death)}) else self.death
 
 	def __str__(self, short=False, long=False) -> str:
 		name = " ".join([word[0].upper() + word[1:] for word in self.name.split(" ")])
@@ -91,7 +91,7 @@ class node:
 			connections += "\n\t\u2022 Siblings\n\t\t" + "\n\t\t".join(str(sibling) for sibling in self.siblings) if len(self.siblings) else ""
 			connections += ("\n\t\u2022 Children\n\t\t" + "\n\t\t".join([str(child) + (" [" + ", ".join([parent.__str__(short=True) for parent in child.parents - {self}]) + "]" if child.parents - {self} != set() else "") for child in self.children])) if len(self.children) else ""
 
-		return surname + ", " + name + ((" [" + self.birth + " - " + self.death + "]" if self.death else " [" + self.birth + "]") + Fore.CYAN + " " + self.id + Fore.RESET + connections if not short else "")
+		return "(" + Fore.CYAN + self.id + Fore.RESET + ") " + surname + ", " + name + ((" [" + self.birth + " - " + self.death + "]" if self.death else " [" + self.birth + "]") + connections if not short else "")
 
 	# Parents.
 	def addParent(self, parent: "node") -> None:
