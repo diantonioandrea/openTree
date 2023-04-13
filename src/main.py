@@ -1,7 +1,7 @@
 # openTree
 
 import openTree
-import os, sys, shutil, platform, CLIbrary
+import os, sys, shutil, platform, random, CLIbrary
 from colorama import Fore, Back, Style
 
 CLIbrary.data.setting_fileExtension = ".ot"
@@ -125,7 +125,7 @@ except:
 while True:
 	user = openTree.user()
 
-	fileHandler = {"path": dataPath + user.name + ".obc", "ignoreMissing": True}
+	fileHandler = {"path": dataPath + user.name, "ignoreMissing": True}
 	userData = CLIbrary.aLoad(fileHandler)
 
 	if userData != None:
@@ -186,10 +186,10 @@ while True:
 	fileHandler["data"] = user
 	CLIbrary.aDump(fileHandler)
 
-	cmdHandler["allowedCommands"] = ["set", "password", "new"]
+	cmdHandler["allowedCommands"] = ["set", "password", "delete", "new"]
 
 	if len(tree):
-		cmdHandler["allowedCommands"] += ["list", "connections", "edit", "remove", "stats"]
+		cmdHandler["allowedCommands"] += ["list", "details", "edit", "remove"]
 
 	if len(tree) > 1:
 		cmdHandler["allowedCommands"] += ["connect", "disconnect"]
@@ -245,6 +245,20 @@ while True:
 
 		user.register()
 		CLIbrary.output({"type": "verbose", "string": "PASSWORD SET"})
+		continue
+
+	# DELETE
+		
+	elif cmd == "delete": # Deletes the profile.
+		deletionCode = str(random.randint(10**3, 10**4-1))
+
+		if CLIbrary.strIn({"request": "Given that this action is irreversible, insert \"" + deletionCode + "\" to delete your profile"}) == deletionCode:
+			os.remove(dataPath + user.name + CLIbrary.settings.data.setting_fileExtension)
+
+			CLIbrary.output({"type": "verbose", "string": "PROFILE DELETED"})
+			break
+
+		CLIbrary.output({"type": "error", "string": "WRONG VERIFICATION CODE"})
 		continue
 
 	# NEW
@@ -314,7 +328,7 @@ while True:
 
 	# CONNECTIONS
 
-	elif cmd == "connections": # Prints the connections of a single node.
+	elif cmd == "details": # Prints the connections of a single node.
 		if "n" not in sdOpts:
 			CLIbrary.output({"type": "error", "string": "MISSING OPTION"})
 			continue
@@ -327,12 +341,6 @@ while True:
 			continue
 
 		print(target.__str__(long=True))
-		continue
-
-	# STATS
-
-	elif cmd == "stats": # Tree statistics.
-		print("Number of nodes: {}".format(len(tree)))
 		continue
 
 	# CONNECT
@@ -442,3 +450,5 @@ while True:
 			except:
 				CLIbrary.output({"type": "error", "string": "PARENT NOT FOUND"})
 				continue
+
+print("\nGoodbye, " + str(user) + ".\n")

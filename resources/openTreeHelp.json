@@ -9,6 +9,9 @@
 		"description": "Sets the value for a setting.",
 		"options": {"-t": "THEME:light/dark"}
 	},
+	"delete": {
+		"description": "Deletes the user's profile."
+	},
 	"new": {
 		"description": "Creates a new node"
 	},
@@ -23,12 +26,9 @@
 	"list": {
 		"description": "Lists the nodes in the tree."
 	},
-	"connections": {
+	"details": {
 		"description": "Prints the connections of a single node.",
 		"options": {"-n#": "NODES_ID"}
-	},
-	"stats": {
-		"description": "Print some statistics on the tree."
 	},
 	"connect": {
 		"description": "Connects two nodes.",
