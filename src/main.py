@@ -1,7 +1,7 @@
 # openTree
 
 import openTree
-import os, sys, shutil, requests, platform, zipfile, CLIbrary
+import os, sys, shutil, platform, CLIbrary
 from colorama import Fore, Back, Style
 
 CLIbrary.data.setting_fileExtension = ".ot"

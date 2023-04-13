@@ -13,11 +13,10 @@ There are some Python modules that need to be installed in order to compile and 
 2. Usage
 	* [CLIbrary](https://github.com/diantonioandrea/CLIbrary): interface, inputs and outputs.
 	* bcrypt: profile password-protection.
-	* requests: update system.
 
 As a one-liner:
 
-	python3 -m pip install --upgrade pyinstaller CLIbrary bcrypt requests
+	python3 -m pip install --upgrade pyinstaller CLIbrary bcrypt
 
 ### Compiling and installing from source
 
@@ -30,7 +29,7 @@ where PLATFORM must be replaced by:
 * windows
 * unix (linux and macOS)
 
-based on the platform on which **openTree** will be compiled. This will also produce a release package under ./release/openTree-PLATFORM.zip.    
+based on the platform on which **openTree** will be compiled.  
 **openTree** can be then installed[^2] by:
 
 	./openTree install
