@@ -98,9 +98,6 @@ try:
 	if not os.path.exists(dataPath):
 		os.makedirs(dataPath)
 
-	if not os.path.exists(reportsPath):
-		os.makedirs(reportsPath)
-
 	if not os.path.exists(resourcesPath):
 		raise(FileNotFoundError)
 
