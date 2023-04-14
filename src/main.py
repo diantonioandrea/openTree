@@ -122,8 +122,9 @@ except:
 
 if production:
 	try:
-		latestCommit = datetime.fromisoformat(requests.get("https://api.github.com/repos/diantonioandrea/" + name + "/commits").json()[0]["commit"]["author"]["date"].replace("Z", ""))
-		localVersion = datetime.fromtimestamp(os.path.getmtime(installPath + name))
+		latestCommit = datetime.fromisoformat(requests.get("https://api.github.com/repos/diantonioandrea/" + name + "/commits").json()[0]["commit"]["author"]["date"])
+		localVersion = datetime.fromtimestamp(os.path.getmtime(installPath + name + (".exe" if system == "Windows" else "")))
+		localVersion = localVersion.replace(tzinfo=datetime.now().astimezone().tzinfo)
 
 		if localVersion < latestCommit:
 			CLIbrary.output({"type": "verbose", "string": name.upper() + " HAS BEEN UPDATED, CHECK IT ON https://github.com/diantonioandrea/" + name, "before": "\n"})
