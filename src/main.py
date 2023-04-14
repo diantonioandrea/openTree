@@ -1,8 +1,9 @@
 # openTree
 
 import openTree
-import os, sys, shutil, platform, random, CLIbrary
+import os, sys, shutil, platform, random, requests, CLIbrary
 from colorama import Fore, Back, Style
+from datetime import datetime
 
 CLIbrary.data.setting_fileExtension = ".ot"
 
@@ -116,6 +117,27 @@ except:
 		CLIbrary.output({"type": "error", "string": "DATA OR RESOURCES ERROR", "before": "\n", "after": "\n"})
 
 	sys.exit(-1)
+
+# UPDATE NOTIFICATION
+
+if production:
+	try:
+		latestCommit = datetime.fromisoformat(requests.get("https://api.github.com/repos/diantonioandrea/" + name + "/commits").json()[0]["commit"]["author"]["date"].replace("Z", ""))
+
+		if system == "Darwin":
+			localVersion = datetime.fromtimestamp(os.stat(installPath + name).st_ctime)
+
+		else:
+			localVersion = latestCommit
+
+		if localVersion < latestCommit:
+			CLIbrary.output({"type": "verbose", "string": name.upper() + " HAS BEEN UPDATED, CHECK IT ON https://github.com/diantonioandrea/" + name, "before": "\n"})
+
+		else:
+			CLIbrary.output({"type": "verbose", "string": "YOU'RE ON THE LATEST COMMIT", "before": "\n"})
+
+	except:
+		CLIbrary.output({"type": "warning", "string": "COULDN'T CHECK FOR UPDATES", "before": "\n"})
 
 # LOGIN OR REGISTER
 
