@@ -13,10 +13,11 @@ There are some Python modules that need to be installed in order to compile and 
 2. Usage
 	* [CLIbrary](https://github.com/diantonioandrea/CLIbrary): interface, inputs and outputs.
 	* bcrypt: profile password-protection.
+	* requests: Update notification.
 
 As a one-liner:
 
-	python3 -m pip install --upgrade pyinstaller CLIbrary bcrypt
+	python3 -m pip install --upgrade pyinstaller CLIbrary bcrypt requests
 
 ### Compiling and installing from source
 
