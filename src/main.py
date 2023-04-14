@@ -52,8 +52,6 @@ if production: # Production.
 else: # Testing.
 	installPath = str(os.getcwd()) + "/"
 
-	reportsPath = installPath + "reports/"
-
 dataPath = installPath + "data/"
 resourcesPath = installPath + "resources/"
 
