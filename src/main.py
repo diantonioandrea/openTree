@@ -120,15 +120,17 @@ except:
 
 if production:
 	try:
-		latestCommit = datetime.fromisoformat(requests.get("https://api.github.com/repos/diantonioandrea/" + name + "/commits").json()[0]["commit"]["author"]["date"])
+		commits = requests.get("https://api.github.com/repos/diantonioandrea/" + name + "/commits").json()
 		localVersion = datetime.fromtimestamp(os.path.getmtime(installPath + name + (".exe" if system == "Windows" else "")))
 		localVersion = localVersion.replace(tzinfo=datetime.now().astimezone().tzinfo)
 
-		if localVersion < latestCommit:
-			CLIbrary.output({"type": "verbose", "string": name.upper() + " HAS BEEN UPDATED, CHECK IT ON https://github.com/diantonioandrea/" + name, "before": "\n"})
+		changes = sum([localVersion < datetime.fromisoformat(commit["commit"]["author"]["date"]) for commit in commits])
+
+		if changes:
+			CLIbrary.output({"type": "verbose", "string": "{} NEW COMMIT(S), CHECK https://github.com/diantonioandrea/".format(changes) + name, "before": "\n"})
 
 	except:
-		CLIbrary.output({"type": "warning", "string": "COULDN'T CHECK FOR UPDATES", "before": "\n"})
+		pass
 
 # LOGIN OR REGISTER
 
