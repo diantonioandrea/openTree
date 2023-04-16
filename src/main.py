@@ -137,7 +137,7 @@ if production:
 while True:
 	user = openTree.user()
 
-	fileHandler = {"path": dataPath + user.name, "ignoreMissing": True}
+	fileHandler = {"path": dataPath + str(user), "ignoreMissing": True}
 	userData = CLIbrary.aLoad(fileHandler)
 
 	if userData != None:
@@ -169,7 +169,7 @@ while True:
 		break
 
 	else:
-		if not CLIbrary.boolIn({"request": "User \"" + user.name + "\" does not exist. Would you like to create it?"}):
+		if not CLIbrary.boolIn({"request": "User \"" + str(user) + "\" does not exist. Would you like to create it?"}):
 			if CLIbrary.boolIn({"request": "Exit"}):
 				print("\nGoodbye.\n")
 				sys.exit(-1)
@@ -186,7 +186,7 @@ print("Type \'help\' if needed\n")
 tree = user.tree
 
 # Prompt.
-cmdHandler = {"request": "[" + user.name + "@" + name + "]"}
+cmdHandler = {"request": "[" + str(user) + "@" + name + "]"}
 cmdHandler["style"] = Fore.MAGENTA
 
 # The help that gets printed and the commands depend on the environment.
@@ -265,7 +265,7 @@ while True:
 		deletionCode = str(random.randint(10**3, 10**4-1))
 
 		if CLIbrary.strIn({"request": "Given that this action is irreversible, insert \"" + deletionCode + "\" to delete your profile"}) == deletionCode:
-			os.remove(dataPath + user.name + CLIbrary.settings.data.setting_fileExtension)
+			os.remove(dataPath + str(user) + CLIbrary.settings.data.setting_fileExtension)
 
 			CLIbrary.output({"type": "verbose", "string": "PROFILE DELETED"})
 			break
