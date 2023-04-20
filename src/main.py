@@ -31,7 +31,7 @@ system = platform.system()
 path = os.getenv("PATH")
 
 print("\n" + Back.MAGENTA + Fore.WHITE + " " + version + " " + Back.WHITE + Fore.MAGENTA + " " + name + " " + Style.RESET_ALL) if production else print("\n" + Back.WHITE + Fore.BLUE + " " + name + " " + Style.RESET_ALL)
-print("Genealogy utility written in Python and built with CLIbrary")
+print("Genealogy utility written in Python and built with CLIbrary.")
 print("Developed by " + Style.BRIGHT + Fore.MAGENTA + "Andrea Di Antonio" + Style.RESET_ALL + ", more on " + Style.BRIGHT + "https://github.com/diantonioandrea/" + name + Style.RESET_ALL)
 
 # PATHS
