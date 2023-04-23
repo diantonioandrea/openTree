@@ -1,6 +1,8 @@
 # openTree
 
-Genealogy utility written in Python and built with [CLIbrary](https://github.com/diantonioandrea/CLIbrary).
+Genealogy utility written in Python and built with [CLIbrary](https://github.com/diantonioandrea/CLIbrary).[^1]
+
+[^1]: **NBody** has been archived and should serve just as a fun project and a [CLIbrary](https://github.com/diantonioandrea/CLIbrary) example.
 
 ## Installation
 
@@ -21,7 +23,7 @@ As a one-liner:
 
 ### Compiling and installing from source
 
-**openTree** can be compiled[^1] by:
+**openTree** can be compiled[^2] by:
 
 	make PLATFORM
 
@@ -31,7 +33,7 @@ where PLATFORM must be replaced by:
 * unix (Linux and macOS)
 
 based on the platform on which **openTree** will be compiled.  
-**openTree** can be then installed[^2] by:
+**openTree** can be then installed[^3] by:
 
 	./openTree install
 
@@ -41,8 +43,8 @@ or
 
 on Windows.
 
-[^1]: The Makefile for the Windows version is written for [NMAKE](https://learn.microsoft.com/en-gb/cpp/build/reference/nmake-reference?view=msvc-170).
-[^2]: This is the only way to install **openTree**.
+[^2]: The Makefile for the Windows version is written for [NMAKE](https://learn.microsoft.com/en-gb/cpp/build/reference/nmake-reference?view=msvc-170).
+[^3]: This is the only way to install **openTree**.
 
 ## Commands
 
