@@ -4,7 +4,7 @@ Genealogy utility written in Python and built with [CLIbrary](https://github.com
 
 **openTree** is an easy-to-use genealogy utility written in Python and built with [CLIbrary](https://github.com/diantonioandrea/CLIbrary). It allows users to *easily store, search, and visualize their family trees and track their family's history*.
 
-[^1]: **NBody** has been archived and should serve just as a fun project and a [CLIbrary](https://github.com/diantonioandrea/CLIbrary) example.
+[^1]: **openTree** has been archived and should serve just as a fun project and a [CLIbrary](https://github.com/diantonioandrea/CLIbrary) example.
 
 ## Installation
 
